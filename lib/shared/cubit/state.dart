@@ -78,3 +78,11 @@ class SocialAppGetAllUsersSuccessState extends SocialAppState {}
 
 class SocialAppGetAllUsersErrorState extends SocialAppState {}
 
+// send message
+class SocialAppSendMessageSuccessState extends SocialAppState {}
+
+class SocialAppSendMessageErrorState extends SocialAppState {}
+
+// get message
+class SocialAppGetMessageSuccessState extends SocialAppState {}
+

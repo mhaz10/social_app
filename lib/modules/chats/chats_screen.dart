@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/models/user_model/user_model.dart';
+import 'package:social_app/modules/chat_details/chat_details.dart';
 import 'package:social_app/shared/cubit/cubit.dart';
 import 'package:social_app/shared/cubit/state.dart';
 
@@ -33,7 +34,7 @@ class ChatsScreen extends StatelessWidget {
   Widget chatItem(UserModel userModel, context) {
     return InkWell(
       onTap: () {
-        //Navigator.push(context, MaterialPageRoute(builder: (context) => ChatDetailsScreen(userModel: userModel)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ChatDetailsScreen(userModel: userModel)));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
