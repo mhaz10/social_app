@@ -87,7 +87,7 @@ class ChatDetailsScreen extends StatelessWidget {
                                   onPressed: () {
                                     SocialAppCubit.get(context).sendMessage(
                                         receiverId: userModel.uId!,
-                                        dateTime: DateTime.now(),
+                                        dateTime: DateTime.now().millisecond,
                                         text: textController.text);
                                   },
                                   child: Icon(
