@@ -19,6 +19,9 @@ class SocialAppCubit extends Cubit<SocialAppState> {
 
   void changeBottomNav({required int index}) {
     {
+      if (index == 1) {
+        getAllUsers();
+      }
       this.index = index;
       emit(SocialAppChangeBottomNavState());
     }
@@ -182,12 +185,12 @@ class SocialAppCubit extends Cubit<SocialAppState> {
 
         element.reference.collection('like').get().then((value) {
           likes.add(value.docs.length);
+          element.reference.collection('comments').get().then((value) {
+            comments.add(value.docs.length);
+            postsModel.add(PostsModel.fromJson(element.data()));
+            emit(SocialAppGetPostSuccessState());
+          },);
         },);
-        element.reference.collection('comments').get().then((value) {
-          comments.add(value.docs.length);
-        },);
-        postsModel.add(PostsModel.fromJson(element.data()));
-        emit(SocialAppGetPostSuccessState());
       });
     },).catchError((error) {
       print(error.toString());
@@ -239,5 +242,23 @@ class SocialAppCubit extends Cubit<SocialAppState> {
       print(error.toString());
       emit(SocialAppGetCommentsErrorState());
     });
+  }
+
+  List<UserModel> allUsers = [];
+
+  void getAllUsers() {
+    emit(SocialAppGetAllUsersLoadingState());
+
+    if (allUsers.length == 0)
+      FirebaseFirestore.instance.collection('users').get().then((value) {
+        value.docs.forEach((element) {
+          if (element.data()['uId'] !=  userModel!.uId)
+            allUsers.add(UserModel.fromJson(element.data()));
+          emit(SocialAppGetAllUsersSuccessState());
+        });
+      },).catchError((error) {
+        print(error.toString());
+        emit(SocialAppGetAllUsersErrorState());
+      });
   }
 }

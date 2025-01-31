@@ -71,3 +71,10 @@ class SocialAppGetCommentsSuccessState extends SocialAppState {}
 
 class SocialAppGetCommentsErrorState extends SocialAppState {}
 
+// get all users
+class SocialAppGetAllUsersLoadingState extends SocialAppState {}
+
+class SocialAppGetAllUsersSuccessState extends SocialAppState {}
+
+class SocialAppGetAllUsersErrorState extends SocialAppState {}
+

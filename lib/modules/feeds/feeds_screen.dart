@@ -19,7 +19,7 @@ class FeedsScreen extends StatelessWidget {
       builder: (context, state) {
         return SingleChildScrollView(
           child:
-          SocialAppCubit.get(context).postsModel.isNotEmpty &&  SocialAppCubit.get(context).postsUid.isNotEmpty && SocialAppCubit.get(context).likes.isNotEmpty && SocialAppCubit.get(context).comments.isNotEmpty ?
+          SocialAppCubit.get(context).postsModel.length > 0 &&  SocialAppCubit.get(context).postsUid.length > 0 && SocialAppCubit.get(context).likes.length > 0 && SocialAppCubit.get(context).comments.length > 0 ?
           Column(
             children: [
               addPost(SocialAppCubit.get(context).userModel!.image,context),
