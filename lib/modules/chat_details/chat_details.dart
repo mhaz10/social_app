@@ -19,7 +19,7 @@ class ChatDetailsScreen extends StatelessWidget {
     return Builder(
         builder: (context) {
 
-          SocialAppCubit.get(context).getMassage(receiverId: userModel.uId!);
+          SocialAppCubit.get(context).getMessages(receiverId: userModel.uId!);
 
           return BlocConsumer<SocialAppCubit, SocialAppState>(
             listener: (context, state) {},
@@ -87,7 +87,7 @@ class ChatDetailsScreen extends StatelessWidget {
                                   onPressed: () {
                                     SocialAppCubit.get(context).sendMessage(
                                         receiverId: userModel.uId!,
-                                        dateTime: Timestamp.now(),
+                                        dateTime: DateTime.now(),
                                         text: textController.text);
                                   },
                                   child: Icon(

@@ -263,7 +263,7 @@ class SocialAppCubit extends Cubit<SocialAppState> {
       });
   }
 
-  void sendMessage ({required String receiverId, required Timestamp dateTime, required String text,}) {
+  void sendMessage ({required String receiverId, required dynamic dateTime, required String text,}) {
 
     MessageModel messageModel = MessageModel(
       senderId: userModel!.uId,
@@ -306,10 +306,30 @@ class SocialAppCubit extends Cubit<SocialAppState> {
 
   List<MessageModel> messages = [];
 
-  void getMassage({required String receiverId}) {
+  // void getMessages({required String receiverId}) {
+  //   FirebaseFirestore.instance
+  //       .collection('users')
+  //       .doc(userModel!.uId)
+  //       .collection('chats')
+  //       .doc(receiverId)
+  //       .collection('messages')
+  //       .orderBy('dateTime', descending: true)
+  //       .snapshots()
+  //       .listen((event) {
+  //     messages.clear();
+  //     messages.addAll(event.docs.map((e) => MessageModel.fromJson(e.data())));
+  //
+  //     emit(SocialAppGetMessageSuccessState());
+  //   });
+  // }
+
+
+  void getMessages({
+    required String receiverId,
+  }) {
     FirebaseFirestore.instance
         .collection('users')
-        .doc(userModel!.uId)
+        .doc(userModel!.uId!)
         .collection('chats')
         .doc(receiverId)
         .collection('messages')
@@ -319,9 +339,13 @@ class SocialAppCubit extends Cubit<SocialAppState> {
       messages = [];
       event.docs.forEach((element) {
         messages.add(MessageModel.fromJson(element.data()));
-      },);
+      });
+      for(var i in messages) {
+        print(i.text);
+      }
       emit(SocialAppGetMessageSuccessState());
-    },);
+    });
   }
+
 
 }

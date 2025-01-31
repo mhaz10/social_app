@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/date_symbol_data_file.dart';
 import 'package:social_app/layout/social_app/layout_screen.dart';
 import 'package:social_app/modules/login/login_screen.dart';
 import 'package:social_app/modules/onBoarding/onBoarding_screen.dart';
