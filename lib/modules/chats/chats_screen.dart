@@ -41,7 +41,7 @@ class ChatsScreen extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 30,
-              backgroundImage: NetworkImage(userModel.image!),
+              backgroundImage: userModel.image != '' ? NetworkImage(userModel.image!) : AssetImage('assets/images/user_image.png'),
             ),
             SizedBox(width: 15,),
 
