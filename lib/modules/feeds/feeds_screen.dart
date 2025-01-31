@@ -202,7 +202,7 @@ class FeedsScreen extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 18,
-                      backgroundImage: NetworkImage(SocialAppCubit.get(context).userModel!.image!),
+                      backgroundImage: SocialAppCubit.get(context).userModel!.image != '' ? NetworkImage(SocialAppCubit.get(context).userModel!.image!) : AssetImage('assets/images/user_image.png'),
                     ),
                     SizedBox(width: 15,),
                     Text('write a comment'),
